@@ -1,0 +1,23 @@
+# Node
+node_modules
+**/node_modules
+
+# Build output
+dist
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Lockfiles (optional to include, but often not needed in context)
+# pnpm-lock.yaml
+
+# OS / Editor
+.DS_Store
+.env
+.vscode
+.idea
+.git
+
+# Docker
+docker-compose.yml

@@ -1,0 +1,3 @@
+echo "Running commit-msg hook: conventional commit lint"
+# Run local commitlint via pnpm so it uses installed devDependency
+pnpm exec commitlint --edit "$1"

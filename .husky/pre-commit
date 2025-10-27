@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "pre-commit: skipping eslint check (moved to CI or lint-staged)"
+exit 0
