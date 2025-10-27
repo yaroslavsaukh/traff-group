@@ -23,11 +23,9 @@ export class RedisModule {
         const client = new Redis({
           host: opts.host,
           port: opts.port,
-          // simple reconnect strategy
           retryStrategy: (times: number) => Math.min(times * 50, 2000),
         });
 
-        // prevent unhandled errors from crashing the process
         client.on('error', (err: Error) => {
           console.error('[redis] error', err && err.message ? err.message : err);
         });

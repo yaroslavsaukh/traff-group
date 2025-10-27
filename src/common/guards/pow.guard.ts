@@ -48,17 +48,13 @@ export class ProofOfWorkGuard implements CanActivate {
       throw new ForbiddenException('Invalid PoW: insufficient difficulty');
     }
 
-    // replay protection: store (clientId:nonce) in redis with TTL
     const key = `pow:nonce:${clientId}:${nonce}`;
     const exists = await this.redisClient.get(key);
     if (exists) {
       throw new ForbiddenException('Replay detected: nonce already used');
     }
-    // set with short TTL
     await this.redisClient.set(key, '1', 'PX', allowedWindow);
 
-    // optional: record request in audit (delegated to controller/service)
-    // allow
     return true;
   }
 }

@@ -1,5 +1,4 @@
 export default () => {
-  // Prefer explicit full URI env vars
   const explicitUri = process.env.MONGO_URI ?? process.env.MONGO_URL ?? process.env.MONGODB_URI;
 
   if (explicitUri) {
@@ -14,7 +13,6 @@ export default () => {
     };
   }
 
-  // Build URI from init vars (useful in docker-compose with MONGO_INITDB_* vars)
   const user = process.env.MONGO_INITDB_ROOT_USERNAME;
   const pass = process.env.MONGO_INITDB_ROOT_PASSWORD;
   const database = process.env.MONGO_INITDB_DATABASE ?? process.env.MONGO_DB ?? 'pow_mvp';

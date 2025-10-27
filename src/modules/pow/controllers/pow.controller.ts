@@ -38,7 +38,6 @@ export class PowController {
     return this.powService.getChallenge(dto.clientId, dto.difficulty ?? 4);
   }
 
-  // Protected resource example: require PoW + throttling
   @Get('protected-resource')
   @UseGuards(ProofOfWorkGuard)
   @Throttle({
@@ -49,7 +48,6 @@ export class PowController {
   })
   @ApiOperation({ summary: 'Example protected endpoint; requires PoW headers' })
   async getProtected(@ClientId() clientId: string) {
-    // create an audit record
     await this.auditService.createLog({
       clientId: clientId ?? 'unknown',
       path: '/pow/protected-resource',
